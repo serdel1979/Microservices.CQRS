@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using OrderService.Services;
+using OrderService.Services.Commands;
 using RabbitMQ.Client;
 using System.Text;
 

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using OrderService.Models;
 
-namespace OrderService.Services
+namespace OrderService.Services.Commands
 {
     public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
     {
@@ -9,7 +9,7 @@ namespace OrderService.Services
 
         CreateOrderCommandHandler(OrderDbContext context)
         {
-            this._context = context;
+            _context = context;
         }
 
         public async Task Handle(CreateOrderCommand request, CancellationToken cancellationToken)

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using OrderService.Models;
 
-namespace OrderService.Services
+namespace OrderService.Services.Querys
 {
     public class GetOrdersQueryHandler : IRequestHandler<GetOrdersQuery, List<Order>>
     {
