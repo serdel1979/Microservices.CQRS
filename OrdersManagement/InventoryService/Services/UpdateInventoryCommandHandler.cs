@@ -10,7 +10,8 @@ namespace InventoryService.Services
         {
             this._context = context;
         }
-        public async Task<Unit> Handle(UpdateInventoryCommand request, CancellationToken cancellationToken)
+
+        public async Task Handle(UpdateInventoryCommand request, CancellationToken cancellationToken)
         {
             var product = await _context.Products.FindAsync(request.ProductId);
             if (product != null)
@@ -19,8 +20,6 @@ namespace InventoryService.Services
                 _context.Products.Update(product);
                 await _context.SaveChangesAsync(cancellationToken);
             }
-
-            return Unit.Value;
         }
     }
 }

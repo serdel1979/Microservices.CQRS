@@ -2,6 +2,7 @@ using InventoryService;
 using InventoryService.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<InventoryDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("InventoryDatabase")));
 
-builder.Services.AddMediatR(typeof(Program).Assembly);
+//builder.Services.AddMediatR(typeof(Program).Assembly);
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.Load("InventoryService.Services")));
+
+
 builder.Services.AddHostedService<InventoryConsumer>();
 
 

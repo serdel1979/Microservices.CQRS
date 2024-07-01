@@ -12,7 +12,7 @@ namespace OrderService.Services
             this._context = context;
         }
 
-        public async Task<Unit> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+        public async Task Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
             Order order = new Order()
             {
@@ -24,7 +24,8 @@ namespace OrderService.Services
             _context.Orders.Add(order);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
         }
+
+
     }
 }
